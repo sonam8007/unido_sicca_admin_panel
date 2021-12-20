@@ -64,40 +64,51 @@ class Dashboard extends React.Component {
     
     axios.all([
       instance.get('/dashboard/status'),
-      instance.get('/water/graph/all'),
-      instance.get('/energy/graph/all/1'),
-      instance.get('/pump/activity/all/1')
+      instance.get('/pump/activity/all/1'),
+      // instance.get('/water/graph/all'),
+      // instance.get('/energy/graph/all/1'),
     ])
     .then(axios.spread((...response) => {
       console.log(response)
       let status = response[0].data;
-      let waterGraphlabels=[];
-      let waterGraphc =[]
-      let waterGraphs=[];
-      for (var i = 0; i < response[1].data.activity.length; i++) {
+      // let waterGraphlabels=[];
+      // let waterGraphc =[]
+      // let waterGraphs=[];
+      // for (var i = 0; i < response[2].data.activity.length; i++) {
         
-        waterGraphlabels.push(response[1].data.activity[i].created_at);
-        waterGraphc.push(response[1].data.activity[i].avg_consumed);
-        waterGraphs.push(response[1].data.activity[i].avg_saved);
-      }
-      let energyGraphlabels=[];
-      let energyGraphc =[]
-      let energyGraphs=[];
-      for (i = 0; i < response[2].data.activity.length; i++) {
+      //   waterGraphlabels.push(response[2].data.activity[i].created_at);
+      //   waterGraphc.push(response[2].data.activity[i].avg_consumed);
+      //   waterGraphs.push(response[2].data.activity[i].avg_saved);
+      // }
+      // let energyGraphlabels=[];
+      // let energyGraphc =[]
+      // let energyGraphs=[];
+      // for (i = 0; i < response[3].data.activity.length; i++) {
         
-        energyGraphlabels.push(response[2].data.activity[i].created_at);
-        energyGraphc.push(response[2].data.activity[i].avg_consumed);
-        energyGraphs.push(response[2].data.activity[i].avg_saved);
+      //   energyGraphlabels.push(response[3].data.activity[i].created_at);
+      //   energyGraphc.push(response[3].data.activity[i].avg_consumed);
+      //   energyGraphs.push(response[3].data.activity[i].avg_saved);
+      // }
+      let pumpGraphlabels = [];
+      let pumpGraphh = [];
+      if (response[1].data.activity.length !== 0) {
+        for (var i = 0; i < response[1].data.activity.length; i++) {
+          pumpGraphlabels.push(response[1].data.activity[i].created_at);
+          pumpGraphh.push(response[1].data.activity[i].totalHours);
+        }
       }
-      let pumpGraphlabels=[];
-      let pumpGraphh =[];
-      for (i = 0; i < response[3].data.activity.length; i++) {
-        
-        pumpGraphlabels.push(response[3].data.activity[i].created_at);
-        pumpGraphh.push(response[3].data.activity[i].totalHours);
-  
-      }
-      this.setState({ dashboardStatus: status,totalAcres:status.totalAcres.totalAcres,waterGraphlabel:waterGraphlabels,waterGraphConsumed:waterGraphc,waterGraphSaved:waterGraphs,energyGraphlabel:energyGraphlabels,energyGraphConsumed:energyGraphc,energyGraphSaved:energyGraphs,pumpGraphlabel:pumpGraphlabels,pumpActivity:pumpGraphh });
+      this.setState({ 
+        dashboardStatus: status,
+        totalAcres:status.totalAcres.totalAcres,
+        // waterGraphlabel:waterGraphlabels,
+        // waterGraphConsumed:waterGraphc,
+        // waterGraphSaved:waterGraphs,
+        // energyGraphlabel:energyGraphlabels,
+        // energyGraphConsumed:energyGraphc,
+        // energyGraphSaved:energyGraphs,
+        pumpGraphlabel:pumpGraphlabels,
+        pumpActivity:pumpGraphh 
+      });
       
     }))
     .catch(error => console.log(error));

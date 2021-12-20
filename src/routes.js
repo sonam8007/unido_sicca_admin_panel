@@ -55,6 +55,21 @@ var routes = [
     layout:"/admin"
   },
   // {
+  //   path:"/soilmoisture",
+  //   name:"Soil Moisture",
+  //   iconClass:"left-menu-icon",
+  //   icon:require("assets/icons/line-chart.svg"),
+  //   component: SoilMoisture,
+  //   layout:"/admin"
+  // },
+  // {
+  //   path:"/individual",
+  //   name:"",
+  //   iconClass:"",
+  //   component: Individual,
+  //   layout:"/admin"
+  // },
+  // {
   //   path: "/icons",
   //   name: "Icons",
   //   iconClass: "left-menu-icon",

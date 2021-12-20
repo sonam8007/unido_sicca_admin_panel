@@ -7,13 +7,14 @@ import PerfectScrollbar from "perfect-scrollbar";
 import AdminNavbar from "components/Navbars/AdminNavbar.js";
 import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import Individual from "views/Individual.js";
-
+import Individual from "views/Individual";
+import SoilMoisture from "views/SoilMoisture";
 import routes from "routes.js";
 
 import logo from "assets/img/react-logo.png";
 
 import PrivateRoute from 'Utils/PrivateRoute';
+
 
 var ps;
 
@@ -122,7 +123,8 @@ class Admin extends React.Component {
             <Switch>
               {this.getRoutes(routes)}
               {/* <Redirect from="*" to="/admin/dashboard"/> */}
-              {<Route exact component={Individual} path="/admin/individual/:nodeId" />}
+              {<PrivateRoute exact component={Individual} path="/admin/individual/:nodeId" />}
+              {<PrivateRoute exact component={SoilMoisture} path="/admin/soilmoisture/:nodeId" />}
             </Switch>
             {// we don't want the Footer to be rendered on map page
             this.props.location.pathname.indexOf("maps") !== -1 ? null : (

@@ -36,9 +36,40 @@ class Users extends React.Component {
   }
   
   componentDidMount() {
-    this.loadUsers(this.state.pageIndex);
+    console.log("sub",localStorage.getItem('admin_sub'))
+    if(localStorage.getItem('admin_sub') == 1){
+      
+      this.loadUsers(this.state.pageIndex);
+    }
+    else{
+      this.loadSingleUser()
+    }
   }
-
+  
+  loadSingleUser(){
+    this.setState({isloading:true});
+    let index = this.state.pageIndex+1;
+    axios.all([
+      instance.get('/singleuser/'+index)
+    ])
+    .then(axios.spread((response) => {
+      this.setState({isloading:false});
+      if(this.state.totalPages > this.state.pageIndex){
+        this.setState({pageIndex:this.state.pageIndex+1})
+      }
+      else{
+        this.setState({lastIndexReached:true})
+      }
+      if(this.state.lastIndexReached == false){
+        this.setState({totalPages:Math.ceil(response.data.count/10)});
+      }
+      
+      this.setState({ usersArr:[...this.state.usersArr,...response.data.output],usersArrCount:response.data.count });
+      console.log(this.state.usersArr)
+    }))
+    .catch(error => console.log(error));
+  }
+  
   loadUsers(){
     console.log('called')
     this.setState({isloading:true});
