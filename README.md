@@ -88,4 +88,3 @@ black-dashboard-react
         
 ```
 
-# unido_sicca_admin_panel
