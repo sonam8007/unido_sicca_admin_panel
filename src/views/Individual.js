@@ -293,7 +293,7 @@ class Individual extends React.Component {
       .all([
         instance.get(
           "/node/pump/activity/graph/" +
-            this.props.match.nodeId +
+          this.props.match.params.nodeId +
             "/" +
             selectval
         ),
@@ -938,7 +938,7 @@ class Individual extends React.Component {
                   id="energyselect"
                   className="select_box"
                   onChange={(event) => {
-                    this.setState({ pumpGraph: event.target.value });
+                    this.setState({ pumpGraph: event.target.value});
                     this.updatePumpGraph(event.target.value);
                   }}
                   value={this.state.pumpGraph}

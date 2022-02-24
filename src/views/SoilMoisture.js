@@ -56,7 +56,7 @@ class SoilMoisture extends React.Component {
       ])
      .then(
        axios.spread((...response) => {
-
+        console.log(response[0])
          if(response[0].data.data.length !== 0){
            this.setState({plotData:response[0].data})
          }
@@ -78,7 +78,7 @@ class SoilMoisture extends React.Component {
                 </CardTitle>
               </CardHeader>
               <CardBody>
-                {this.state.sm1.length !== 0 ? (
+                {this.state.plotData.length !== 0 ? (
                   <Plot
                     data = {this.state.plotData['data']}
                     layout={this.state.plotData['layout']}
