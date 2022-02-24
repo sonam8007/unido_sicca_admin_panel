@@ -7,7 +7,6 @@ import axios from "axios";
 // reactstrap components
 import { Card, CardHeader, CardBody, CardTitle, Row, Col } from "reactstrap";
 // import { data } from "jquery";
-
 const SpinnerLoad = () => (
   <img
     src={require("assets/icons/pulse-loader.svg")}
