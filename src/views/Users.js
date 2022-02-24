@@ -1,4 +1,4 @@
-import React,{setState} from "react";
+import React from "react";
 
 import axios from "axios";
 import instance from 'config.js';
@@ -126,6 +126,7 @@ class Users extends React.Component {
                         <th>Nodes</th>
                         <th>Node Created At</th>
                         <th>Land Size</th>
+                        <th>Place</th>
                         <th>User Created At</th>
                       </tr>
                     </thead>
@@ -154,6 +155,7 @@ class Users extends React.Component {
                                 <td>{nodelist}</td>
                                 <td>{nodeCreatedAt}</td>
                                 <td><p>{total_land_size}</p></td>
+                                <td><p>{s.user.village}</p></td>
                                 <td><p>{date}</p></td>
                               </tr>);
                             })}

@@ -587,6 +587,7 @@ class Dashboard extends React.Component {
                   <option value="2">ONE MONTH</option>
                   <option value="3">THREE MONTH</option>
                   <option value="4">SIX MONTH</option>
+                  <option value="5">ONE YEAR</option>
                 </select>
               </div>
               <Card className="card-chart">
@@ -609,6 +610,7 @@ class Dashboard extends React.Component {
                   <option value="2">ONE MONTH</option>
                   <option value="3">THREE MONTH</option>
                   <option value="4">SIX MONTH</option>
+                  <option value="5">ONE YEAR</option>
                 </select>
               </div>
               <Card className="card-chart">
