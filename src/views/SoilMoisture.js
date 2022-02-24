@@ -74,6 +74,7 @@ class SoilMoisture extends React.Component {
               <CardHeader>
                 <CardTitle tag="h4">
                   {this.state.plotData['title']}
+                  <h4> Soil moisture, Temperature, Humidity, soil temperature, pump status & pump mode</h4>
                 </CardTitle>
               </CardHeader>
               <CardBody>
