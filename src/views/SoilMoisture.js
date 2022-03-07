@@ -31,6 +31,7 @@ class SoilMoisture extends React.Component {
       mode:[],
 
       plotData : [],
+      plottitle : '',
     };
   }
 
@@ -51,13 +52,17 @@ class SoilMoisture extends React.Component {
      axios
      .all([
       //  instance.post('http://localhost:4000/graphData',{'node_id':this.props.match.params.nodeId})
-        instance.get('/soilmoisture/chart/'+ this.props.match.params.nodeId)
+        instance.get('/soilmoisture/chart/'+ this.props.match.params.nodeId),
+        instance.get('/api/admin/individual/farmer/' +this.props.match.params.nodeId)
       ])
      .then(
        axios.spread((...response) => {
-        console.log(response[0])
+        console.log(response[1])
          if(response[0].data.data.length !== 0){
            this.setState({plotData:response[0].data})
+         }
+         if(response[1]){
+           this.setState({plottitle:response[1].data})
          }
        })
      );
@@ -73,7 +78,7 @@ class SoilMoisture extends React.Component {
             <Card>
               <CardHeader>
                 <CardTitle tag="h4">
-                  {this.state.plotData['title']}
+                  {this.state.plottitle['title']}
                   <h4> Soil moisture, Temperature, Humidity, soil temperature, pump status & pump mode</h4>
                 </CardTitle>
               </CardHeader>
