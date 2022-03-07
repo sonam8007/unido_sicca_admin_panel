@@ -124,10 +124,10 @@ class Users extends React.Component {
                         <th>Name</th>
                         <th>Device Id</th>
                         <th>Nodes</th>
-                        <th>Node Created At</th>
+                        <th>Control Id</th>
+                        <th>Sicca Id</th>
                         <th>Land Size</th>
                         <th>Place</th>
-                        <th>User Created At</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -142,10 +142,11 @@ class Users extends React.Component {
                           let nodeInfo = n.node_id+' : '+n.crop_name;
                           return(<a key={j} style={{color:'#007D7F',textDecoration:'underline'}} href={"/admin/individual/"+n.node_id}>{nodeInfo}</a>);
                         });
-                        let nodeCreatedAt = s.nodes.map((n,j) => {
-                          let created_at = new Date(n.created_at).toISOString().replace(/T/, ' ').replace(/\..+/, '');
-                          let nodeDate = Moment(created_at).format('L HH:mm:ss');
-                          return(<p className="nodeCreatedDate">{nodeDate}</p>);
+                        let controlIds = s.nodes.map((n,j) => {
+                          // let created_at = new Date(n.created_at).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                          // let nodeDate = Moment(created_at).format('L HH:mm:ss');
+                         
+                          return(<p className="nodeCreatedDate">{n.control_id}</p>);
                         });
                         
                         return (<tr key={i}>
@@ -153,10 +154,10 @@ class Users extends React.Component {
                                 <td><p>{s.user.name}</p></td>
                                 <td><p>{s.user.id}</p></td>
                                 <td>{nodelist}</td>
-                                <td>{nodeCreatedAt}</td>
+                                <td>{controlIds}</td>
+                                <td>{s.user.sicca_id}</td>
                                 <td><p>{total_land_size}</p></td>
                                 <td><p>{s.user.village}</p></td>
-                                <td><p>{date}</p></td>
                               </tr>);
                             })}
                     </tbody>

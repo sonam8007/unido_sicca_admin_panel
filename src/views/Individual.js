@@ -656,30 +656,13 @@ class Individual extends React.Component {
 
     let lastUpdatedAt;
     if (this.state.statusNode.updatedAt) {
-      console.log("old:", this.state.statusNode.updatedAt);
 
-      let tm = new Date(this.state.statusNode.updatedAt)
-        .toISOString()
-        .replace(/T/, " ")
-        .replace(/\..+/, "");
+      let utcDate = Moment(this.state.statusNode.updatedAt);
 
-      lastUpdatedAt = Moment(tm).format("YYYY-MM-DD HH:mm:ss").toLocaleString();
-      console.log("new:", lastUpdatedAt);
-
-      var d = new Date();
-      console.log("current time: ", d);
-      // var n = d.getTimezoneOffset();
-      // console.log("new Date:",n);
-
-      var nn = d.toUTCString();
-      console.log(nn);
-
-      console.log(d.toLocaleString());
-
-      let utcDate = Moment(tm);
+      // Convert the UTC date into IST
       let istDate = Moment(utcDate).tz("Asia/Kolkata");
 
-      console.log(istDate.format("YYYY-MM-DD HH:mm:ss"));
+      lastUpdatedAt = istDate.format("YYYY-MM-DD HH:mm:ss");
     }
 
     return (
@@ -727,8 +710,9 @@ class Individual extends React.Component {
                     Device ID:{" "}
                     <span id="ind_id">{this.state.statusUser.id}</span>
                   </div>
-                  <div className="ind-desc" style={{ opacity: "0" }}>
-                    Node ID - -:-
+                  <div className="ind-desc" style={{ opacity: "1" }}>
+                    Sicca Id - {""}
+                    <span id="ind_id">{this.state.statusUser.sicca_id}</span>
                   </div>
                   {this.state.statusNode.valveStatus === "1" ? (
                     <div className="ind-desc border-blue" id="valve_status">
@@ -752,8 +736,9 @@ class Individual extends React.Component {
                     </span>{" "}
                     Acres
                   </div>
-                  <div className="ind-desc" style={{ opacity: "0" }}>
-                    Node ID - -:-
+                  <div className="ind-desc" style={{ opacity: "1" }}>
+                    Control Id - {""}
+                    <span id="ind_id">{this.state.statusNode.controlId}</span>
                   </div>
                   <div className="ind-desc border-gray" id="dry_run">
                     Dry Run
