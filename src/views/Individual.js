@@ -737,8 +737,8 @@ class Individual extends React.Component {
                     Acres
                   </div>
                   <div className="ind-desc" style={{ opacity: "1" }}>
-                    Control Id - {""}
-                    <span id="ind_id">{this.state.statusNode.controlId}</span>
+                    Mobile Number - {""}
+                    <span id="ind_id">{this.state.statusUser.mobile_number}</span>
                   </div>
                   <div className="ind-desc border-gray" id="dry_run">
                     Dry Run

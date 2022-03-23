@@ -124,7 +124,7 @@ class Users extends React.Component {
                         <th>Name</th>
                         <th>Device Id</th>
                         <th>Nodes</th>
-                        <th>Control Id</th>
+                        <th>Mobile Number</th>
                         <th>Sicca Id</th>
                         <th>Land Size</th>
                         <th>Place</th>
@@ -142,19 +142,19 @@ class Users extends React.Component {
                           let nodeInfo = n.node_id+' : '+n.crop_name;
                           return(<a key={j} style={{color:'#007D7F',textDecoration:'underline'}} href={"/admin/individual/"+n.node_id}>{nodeInfo}</a>);
                         });
-                        let controlIds = s.nodes.map((n,j) => {
-                          // let created_at = new Date(n.created_at).toISOString().replace(/T/, ' ').replace(/\..+/, '');
-                          // let nodeDate = Moment(created_at).format('L HH:mm:ss');
+                        // let controlIds = s.nodes.map((n,j) => {
+                        //   // let created_at = new Date(n.created_at).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                        //   // let nodeDate = Moment(created_at).format('L HH:mm:ss');
                          
-                          return(<p className="nodeCreatedDate">{n.control_id}</p>);
-                        });
+                        //   return(<p className="nodeCreatedDate">{n.control_id}</p>);
+                        // });
                         
                         return (<tr key={i}>
                                 <td><img src={s.profile_pic ? s.profile_pic : require('assets/icons/farmer.png')} className="mini-profile" /></td>
                                 <td><p>{s.user.name}</p></td>
                                 <td><p>{s.user.id}</p></td>
                                 <td>{nodelist}</td>
-                                <td>{controlIds}</td>
+                                <td>{s.user.mobile_number}</td>
                                 <td>{s.user.sicca_id}</td>
                                 <td><p>{total_land_size}</p></td>
                                 <td><p>{s.user.village}</p></td>
