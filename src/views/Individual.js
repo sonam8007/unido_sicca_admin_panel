@@ -659,10 +659,9 @@ class Individual extends React.Component {
 
       let utcDate = Moment(this.state.statusNode.updatedAt);
 
-      // Convert the UTC date into IST
-      let istDate = Moment(utcDate).tz("Asia/Kolkata");
-
-      lastUpdatedAt = istDate.format("YYYY-MM-DD HH:mm:ss");
+      lastUpdatedAt = new Date(this.state.statusNode.updatedAt).toLocaleString("en-US", {timeZone: 'Asia/Kolkata'})
+      // console.log(this.state.statusNode.updatedAt,'====',lastUpdatedAt)
+      // console.log(new Date(this.state.statusNode.updatedAt).toLocaleString("en-US", {timeZone: 'Asia/Kolkata'}))
     }
 
     return (
