@@ -142,16 +142,16 @@ class Individual extends React.Component {
             }
 
             let statusNode = response[0].data.node;
-            // let waterGraphlabels = [];
-            // let waterGraphc = [];
-            // let waterGraphs = [];
-            // if (response[1].data.activity.length !== 0) {
-            //   for (var i = 0; i < response[1].data.activity.length; i++) {
-            //     waterGraphlabels.push(response[1].data.activity[i].created_at);
-            //     waterGraphc.push(response[1].data.activity[i].avg_consumed);
-            //     waterGraphs.push(response[1].data.activity[i].avg_saved);
-            //   }
-            // }
+            let waterGraphlabels = [];
+            let waterGraphc = [];
+            let waterGraphs = [];
+            if (response[1].data.activity.length !== 0) {
+              for (var i = 0; i < response[1].data.activity.length; i++) {
+                waterGraphlabels.push(response[1].data.activity[i].created_at);
+                waterGraphc.push(response[1].data.activity[i].avg_consumed);
+                waterGraphs.push(response[1].data.activity[i].avg_saved);
+              }
+            }
             // let energyGraphlabels = [];
             // let energyGraphc = [];
             // let energyGraphs = [];
@@ -174,9 +174,9 @@ class Individual extends React.Component {
               statusUser: statusUser,
               statusSicca: statusSicca,
               statusNode: statusNode,
-              // waterGraphlabel: waterGraphlabels,
-              // waterGraphConsumed: waterGraphc,
-              // waterGraphSaved: waterGraphs,
+              waterGraphlabel: waterGraphlabels,
+              waterGraphConsumed: waterGraphc,
+              waterGraphSaved: waterGraphs,
               // energyGraphlabel: energyGraphlabels,
               // energyGraphConsumed: energyGraphc,
               // energyGraphSaved: energyGraphs,
