@@ -65,21 +65,21 @@ class Dashboard extends React.Component {
     axios.all([
       instance.get('/dashboard/status'),
       instance.get('/pump/activity/all/1'),
-      // instance.get('/water/graph/all'),
+      instance.get('/water/graph/all'),
       // instance.get('/energy/graph/all/1'),
     ])
     .then(axios.spread((...response) => {
       console.log(response)
       let status = response[0].data;
-      // let waterGraphlabels=[];
-      // let waterGraphc =[]
-      // let waterGraphs=[];
-      // for (var i = 0; i < response[2].data.activity.length; i++) {
+      let waterGraphlabels=[];
+      let waterGraphc =[]
+      let waterGraphs=[];
+      for (var i = 0; i < response[2].data.activity.length; i++) {
         
-      //   waterGraphlabels.push(response[2].data.activity[i].created_at);
-      //   waterGraphc.push(response[2].data.activity[i].avg_consumed);
-      //   waterGraphs.push(response[2].data.activity[i].avg_saved);
-      // }
+        waterGraphlabels.push(response[2].data.activity[i].created_at);
+        waterGraphc.push(response[2].data.activity[i].avg_consumed);
+        waterGraphs.push(response[2].data.activity[i].avg_saved);
+      }
       // let energyGraphlabels=[];
       // let energyGraphc =[]
       // let energyGraphs=[];
@@ -100,9 +100,9 @@ class Dashboard extends React.Component {
       this.setState({ 
         dashboardStatus: status,
         totalAcres:status.totalAcres.totalAcres,
-        // waterGraphlabel:waterGraphlabels,
-        // waterGraphConsumed:waterGraphc,
-        // waterGraphSaved:waterGraphs,
+        waterGraphlabel:waterGraphlabels,
+        waterGraphConsumed:waterGraphc,
+        waterGraphSaved:waterGraphs,
         // energyGraphlabel:energyGraphlabels,
         // energyGraphConsumed:energyGraphc,
         // energyGraphSaved:energyGraphs,

@@ -29,7 +29,7 @@ function Login(props) {
           const token = jwt(response.data.token);
           localStorage.setItem("admin_sub", token.sub);
 
-          if (token.sub == 2) {
+          if (token.sub === 2) {
             setTimeout(function () {
               props.history.push("/admin/users");
             }, 1000);

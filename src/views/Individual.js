@@ -122,10 +122,10 @@ class Individual extends React.Component {
       axios
         .all([
           instance.get("node/details/" + this.props.match.params.nodeId),
-          // instance.get("node/water/graph/" + this.props.match.params.nodeId),
-          // instance.get(
-          //   "node/energy/graph/" + this.props.match.params.nodeId + "/1"
-          // ),
+          instance.get("node/water/graph/" + this.props.match.params.nodeId),
+          instance.get(
+            "node/energy/graph/" + this.props.match.params.nodeId + "/1"
+          ),
           instance.get(
             "node/pump/activity/graph/" + this.props.match.params.nodeId + "/1"
           ),
