@@ -590,7 +590,7 @@ class Individual extends React.Component {
         sm = this.state.statusSicca.sm3;
       }
     }
-    sm = this.state.statusSicca.sm1;
+    sm = this.state.statusSicca!=null?this.state.statusSicca.sm1:0;
     let sm_status;
     if (this.state.statusNode.pumpStatus === "1") {
       if ((sm) => fc) {
